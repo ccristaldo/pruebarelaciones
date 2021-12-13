@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "ee1f5f16-821f-4e52-94cf-a3d6856f296e",
+		"name": "prueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Emprendimientos Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Fundacion1\",\n    \"descripcion\":\"Ayuda a los desamparados\",\n    \"contenido\":\"Este emprendimiento ayuda a los desamparados\",\n    \"fechaCreado\":\"2020-01-01\",\n    \"publicado\":\"true\",\n    \"capturas\":[\"imagen0\",\"imagen1\", \"imagen2\"],\n    \"tags\":[\"tag0\",\"tag1\", \"tag2\"],\n    \"objetivo\": \"1000\",\n    \"owner\": {\"id\":1,\n    \"password\":\"password\"}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/emprendimientos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"emprendimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Usuario Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Marge\",\n    \"apellido\": \"Simpson\",\n    \"email\": \"marge@gmail.com\",\n    \"password\": \"password\",\n    \"fechaCreacion\":\"2020-12-11\",\n    \"ciudad\": \"Resistencia\",\n    \"provincia\": \"Chaco\",\n    \"pais\": \"Argentina\",\n    \"tipo\": \"OWNER\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/usuarios",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
