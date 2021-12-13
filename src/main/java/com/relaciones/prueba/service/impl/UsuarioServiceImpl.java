@@ -5,6 +5,9 @@ import com.relaciones.prueba.entity.UsuarioEntity;
 import com.relaciones.prueba.mapper.UsuarioMapper;
 import com.relaciones.prueba.repository.UsuarioRepository;
 import com.relaciones.prueba.service.UsuarioService;
+import java.util.List;
+import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +32,25 @@ public class UsuarioServiceImpl implements UsuarioService{
         System.out.println("USUARIO GUARDADO");
         return result;
     }
+
+    @Override
+    public UsuarioDTO getById(Long id) {
+        Optional<UsuarioEntity> entity = usuarioRepository.findById(id);
+        if (!entity.isPresent()){
+            System.out.println("id inexistente");
+        }
+        UsuarioDTO result = usuarioMapper.usuarioEntity2DTO(entity.get());
+        return result;    
+    }
     
+    @Transactional
+    @Override
+    public List<UsuarioDTO> getAll() {
+        List<UsuarioEntity> entities = usuarioRepository.findAll();
+        List<UsuarioDTO> dtos = usuarioMapper.listUsuarioEntity2DTO(entities);
+        return dtos;
+    }
+   
 }
 
 
