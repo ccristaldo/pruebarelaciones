@@ -20,7 +20,7 @@ import lombok.Setter;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EmprendimientoDTO {
-     private Long id;
+    private Long id;
     private String nombre;
     private String descripcion;
     private String contenido;
@@ -32,6 +32,6 @@ public class EmprendimientoDTO {
     private List<String> capturas;
     @Convert(converter = StringListConverter.class)
     private List<String> tags;
-    private UsuarioDTO owner;
+    private Long ownerId;
     
 }

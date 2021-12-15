@@ -5,8 +5,11 @@ package com.relaciones.prueba.dto;
  * @author ccristaldo
  */
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.relaciones.prueba.entity.EmprendimientoEntity;
 import com.relaciones.prueba.enums.TipoUsuario;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -36,5 +39,6 @@ public class UsuarioDTO {
     @Enumerated(value = EnumType.STRING)
     private TipoUsuario tipo;
     private boolean deleted = Boolean.FALSE;
+    private List<EmprendimientoEntity> emprendimientos = new ArrayList<>();
     
 }

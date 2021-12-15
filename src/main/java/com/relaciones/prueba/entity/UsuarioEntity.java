@@ -17,11 +17,13 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Proxy;
 /**
  *
  * @author ccristaldo
  */
 @Entity
+//@Proxy(lazy = false)
 @Getter
 @Setter
 @Builder
@@ -45,27 +47,11 @@ public class UsuarioEntity implements Serializable{
     @Enumerated(value = EnumType.STRING)
     private TipoUsuario tipo;
     private boolean deleted = Boolean.FALSE;
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@Json(serialize=false)
+    @OneToMany(mappedBy = "owner", cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<EmprendimientoEntity> emprendimientos = new ArrayList<>();
 
-    public UsuarioEntity() {
-    }
-
-    public UsuarioEntity(Long id, String nombre, String apellido, String email, String password, LocalDate fechaCreacion, String ciudad, String provincia, String pais, TipoUsuario tipo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.password = password;
-        this.fechaCreacion = fechaCreacion;
-        this.ciudad = ciudad;
-        this.provincia = provincia;
-        this.pais = pais;
-        this.tipo = tipo;
-    }
-    
-    
-    
+  
     public void agregarEmprendimiento(EmprendimientoEntity emprendimiento){
         emprendimientos.add(emprendimiento);
         emprendimiento.setOwner(this);

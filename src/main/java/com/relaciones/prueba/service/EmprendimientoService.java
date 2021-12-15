@@ -9,5 +9,7 @@ import com.relaciones.prueba.dto.EmprendimientoDTO;
 public interface EmprendimientoService {
 
     public EmprendimientoDTO save(EmprendimientoDTO emprendimientoDTO);
+
+    public EmprendimientoDTO getById(Long id);
     
 }

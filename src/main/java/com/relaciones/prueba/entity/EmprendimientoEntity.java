@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +17,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Proxy;
 
 /**
  *
@@ -27,6 +29,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+
 public class EmprendimientoEntity {
      
     @Id
@@ -44,13 +47,14 @@ public class EmprendimientoEntity {
     @Convert(converter = StringListConverter.class)
     private List<String> tags;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private UsuarioEntity owner;
 
     public boolean isPublicado(boolean publicado) {
        return publicado; 
     }
     
+   
     public UsuarioEntity getOwner() {
         return owner;
     }
